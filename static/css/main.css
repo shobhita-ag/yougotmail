@@ -1,0 +1,111 @@
+md-content.layout-padding {
+    padding: 0px;
+}
+hr {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.flex.layout.layout-row {
+    padding-bottom: 3px;
+}
+md-input-container label {
+    color: rgba(0,0,0,0.54);
+    font-weight: unset;
+    margin-bottom: 0px;
+}
+md-input-container span {
+    color: rgba(0,0,0,0.54);
+    font-weight: unset;
+    margin-bottom: 0px;
+}
+span.form_header {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3f51b5;
+}
+span.flex {
+    font-size: large;
+    text-align: center;
+    border: black;
+    border-width: thin;
+    border-style: solid;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+button span {
+    border-style: none;
+}
+section.header {
+    background-color: #3f51b5;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+a.header {
+    color: white;
+    font-size: 14px;
+}
+span.no-border {
+    border-style: none;
+    font-size: 13px;
+}
+section.section {
+    padding-top:20px;
+    padding-left:20px;
+    padding-right:20px;
+}
+label.file_label {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+    color: rgba(0,0,0,0.54);
+    margin-left: 2px;
+}
+footer {
+    height: 50px;
+    color: white;
+    background-color: rgb(63, 81, 181);
+}
+div.zones {
+    /*padding: 10px;*/
+    text-align: inherit;
+}
+span.green {
+    background-color: #87e087;
+}
+span.orange {
+    background-color: #efaa52;
+}
+span.light_red {
+    background-color: #ff8181;
+}
+span.flash_red {
+    background-color: #a50000;
+    color: antiquewhite;
+}
+md-datepicker {
+    margin-top: 11px;
+}
+.date_label {
+    padding-right: 50px;
+    color: rgb(244,67,54);
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+    padding-top: 5px;
+    margin-top: 50px;
+    margin-left: 72px;
+}
+md-icon.md-datepicker-calendar-icon{
+    margin-left: 25px;
+}
+
+.md-virtual-repeat-container .md-virtual-repeat-scroller {
+    left: auto;
+}
+
+/*new*/
+
+div md-input-container textarea {
+    overflow-y: scroll; 
+}

@@ -1,0 +1,4 @@
+*.pyc
+*.pem
+staticfiles
+db.sqlite3
