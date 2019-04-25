@@ -126,7 +126,7 @@ CELERY_BEAT_SCHEDULE = {
     # Executes for every 5 minutes on mon,tue,wed,thu,fri,sat
     'send-report': {
         'task': 'portal.tasks.send_report',
-        'schedule': crontab(minute='*/1'),
+        'schedule': crontab(minute='*/30'),
     },
 }
 
