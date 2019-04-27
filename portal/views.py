@@ -55,7 +55,7 @@ class SendEmail(APIView):
 
 		#parsing csvfile
 		if csvfile:
-			file_reader = csv.reader(csvfile, delimiter=',')
+			file_reader = csv.reader(csvfile, delimiter=str(u',').encode('utf-8'))
 			for row in file_reader:
 				to_list.append(row[0])
 
