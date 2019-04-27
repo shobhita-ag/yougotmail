@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-#from __future__ import unicode_literals
+from __future__ import unicode_literals
 
 import json
 import csv
+import logging
+import logstash
 
 from django.conf import settings
 from django.core.mail import EmailMessage
@@ -16,9 +18,13 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+logger = logging.getLogger('python-logstash-logger')
+logger.setLevel(logging.INFO)
+logger.addHandler(logstash.TCPLogstashHandler('localhost', 5959, version=1))
 
 class HomePage(APIView):
 	def get(self, request):
+		logger.info('home page loaded')
 		return render(request, template_name='index.html')
 
 class SendEmail(APIView):
