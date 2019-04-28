@@ -24,23 +24,27 @@ logger.addHandler(logstash.TCPLogstashHandler('localhost', 5959, version=1))
 
 class HomePage(APIView):
 	def get(self, request):
-		logger.info('home page loaded')
+		logger.debug('Home Page loaded')
 		return render(request, template_name='index.html')
 
 class SendEmail(APIView):
 	def post(self, request):
+		logger.debug('Send Email post call')
 		csvfile = request.FILES.get('file', None)
 		email_data = request.data.get('email_data', None)
 
 		#TODO: do we have to validate email data here?
 		if not email_data:
+			logger.error('Email data is null')
 			return Response({"response": "Invalid Email Data"}, status=status.HTTP_400_BAD_REQUEST)
 
 		#validating csvfile
 		if csvfile:
 			if not csvfile.name.endswith('.csv'):
+				logger.error('Uploaded file is not CSV:' + csvfile.name)
 				return Response({"response": "Uploaded file is not CSV"}, status=status.HTTP_400_BAD_REQUEST)
 			if csvfile.size > 1048576:
+				logger.error('Uploaded file is more than 1MB:' + csvfile.size)
 				return Response({"response": "Uploaded file is more than 1MB"}, status=status.HTTP_400_BAD_REQUEST)
 
 		#converting json string to json object
@@ -60,6 +64,7 @@ class SendEmail(APIView):
 				to_list.append(row[0])
 
 		if not (is_valid_email(to_list) and is_valid_email(cc_list) and is_valid_email(bcc_list)):
+			logger.error('Invalid Email Address')
 			return Response({"response": "Invalid Email Address"}, status=status.HTTP_400_BAD_REQUEST)
 
 		try:
@@ -80,6 +85,7 @@ class SendEmail(APIView):
 
 			is_success = email.send(fail_silently=False)
 			if not is_success:
+				logger.error('Error occured while sending emails')
 				return Response({"response": "Error occured while sending emails"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 			#if successful, store the emails in DB
@@ -89,6 +95,7 @@ class SendEmail(APIView):
 
 		except Exception as e:
 			print("Exception while sending emails:" + str(e))
+			logger.error('Exception while sending emails')
 			return Response({"response": "Error occured while sending emails"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 		return Response({"response": "Sent successfully"}, status=status.HTTP_200_OK)		
