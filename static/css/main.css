@@ -83,28 +83,10 @@ span.flash_red {
     background-color: #a50000;
     color: antiquewhite;
 }
-md-datepicker {
-    margin-top: 11px;
-}
-.date_label {
-    padding-right: 50px;
-    color: rgb(244,67,54);
-    font-size: 12px;
-    line-height: 14px;
-    overflow: hidden;
-    padding-top: 5px;
-    margin-top: 50px;
-    margin-left: 72px;
-}
-md-icon.md-datepicker-calendar-icon{
-    margin-left: 25px;
-}
 
 .md-virtual-repeat-container .md-virtual-repeat-scroller {
     left: auto;
 }
-
-/*new*/
 
 div md-input-container textarea {
     overflow-y: scroll; 
