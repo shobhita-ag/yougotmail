@@ -80,7 +80,7 @@ class SendEmail(APIView):
 			if bcc_list:
 				email.bcc = bcc_list
 
-			logger.info("Email sent successfully:" + email.message())
+			logger.info("Email sent successfully:" + str(email.message()))
 
 			is_success = email.send(fail_silently=False)
 			if not is_success:
