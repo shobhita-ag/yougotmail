@@ -80,8 +80,7 @@ class SendEmail(APIView):
 			if bcc_list:
 				email.bcc = bcc_list
 
-			#for debugging - remove
-			print(email.message())
+			logger.info("Email sent successfully:" + email.message())
 
 			is_success = email.send(fail_silently=False)
 			if not is_success:
@@ -94,8 +93,7 @@ class SendEmail(APIView):
 			store_email_data(bcc_list, 3, subject)
 
 		except Exception as e:
-			print("Exception while sending emails:" + str(e))
-			logger.error('Exception while sending emails')
+			logger.error('Exception while sending emails: ' + str(e))
 			return Response({"response": "Error occured while sending emails"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 		return Response({"response": "Sent successfully"}, status=status.HTTP_200_OK)		
